@@ -7,9 +7,13 @@ use Livewire\Component;
 
 class UserNavigation extends Component
 {
+
+    protected $listeners = ['refreshNav' => '$refresh'];
+
     public function logout()
     {
         Auth::logout();
+        $this->emitTo('user-login', 'refreshNav');
         $this->emit('alert', ['type' => 'success', 'message' => 'Logged out successfully']);
         return;
     }
