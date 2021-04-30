@@ -13,7 +13,7 @@ class UserLogin extends Component
     public $email;
     public $password;
 
-    protected $listeners = ['refresh' => 'render'];
+    protected $listeners = ['refreshNav' => '$refresh'];
 
     //This validates user inputs on real time basis
     public function updated($field)
@@ -77,6 +77,7 @@ class UserLogin extends Component
         $user = User::where('email', $mozisha_user['email'])->first();
         //Log user user in
         Auth::login($user);
+        $this->emitTo('user-navigation', 'refreshNav');
         $this->emit('alert', ['type' => 'success', 'message' => 'Logged in successfully']);
         return back();
     }
@@ -95,6 +96,7 @@ class UserLogin extends Component
         ]);
         //Log user user in
         Auth::login($new_user);
+        $this->emitTo('user-navigation', 'refreshNav');
         $this->emit('alert', ['type' => 'success', 'message' => 'Logged in successfully']);
     }
 

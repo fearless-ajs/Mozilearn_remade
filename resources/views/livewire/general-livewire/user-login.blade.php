@@ -36,7 +36,7 @@
 
                             <div class="form-group">
                                 <button wire:loading.remove wire:target="authenticateUser" type="submit" class="btn btn-md full-width pop-login">Login</button>
-                                <button wire:loading  wire:target="authenticateUser" type="submit" class="btn btn-md full-width pop-login"><i class="fa fa-spinner fa-spin"></i> &nbsp; Processing...</button>
+                                <button wire:loading  wire:target="authenticateUser" style="display: none" type="submit" class="btn btn-md full-width pop-login"><i class="fa fa-spinner fa-spin"></i> &nbsp; Processing...</button>
                             </div>
 
                         </form>
